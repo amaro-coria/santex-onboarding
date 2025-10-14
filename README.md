@@ -111,11 +111,10 @@ Click the "Refresh" button in the UI and watch the timestamp update!
 ### 1. Get Familiar
 - ✅ Run the application
 - ✅ Test all features
-- ✅ Read QUICKSTART.md
+- ✅ Read README.md
 - ✅ Explore the code
 
 ### 2. Understand Architecture
-- ✅ Read INSTRUCTIONS.md
 - ✅ Review Spring Boot code
 - ✅ Review React code
 - ✅ Understand Docker setup
@@ -239,7 +238,6 @@ santex-onboarding/
 
 5. **Read troubleshooting:**
    - [SETUP.md - Troubleshooting](SETUP.md#troubleshooting)
-   - [ACCESS_GUIDE.md](ACCESS_GUIDE.md)
 
 ### Quick Fixes
 
