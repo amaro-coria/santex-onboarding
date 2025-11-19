@@ -1,48 +1,246 @@
-.App {
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #1a1e27;
+  color: #ffffff;
+}
+
+/* App Container */
+.app-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 2rem;
+  background: linear-gradient(135deg, #1a1e27 0%, #2d3748 100%);
 }
 
-.container {
-  max-width: 800px;
-  width: 100%;
+/* Loading State */
+.loading-state {
+  text-align: center;
+  animation: fadeIn 0.5s ease-in;
 }
 
-h1 {
-  font-size: 3rem;
+.loading-text {
+  font-size: 1.5rem;
+  color: #4299e1;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Error State */
+.error-state {
+  text-align: center;
+  background: rgba(254, 215, 215, 0.1);
+  border: 2px solid #fc8181;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 600px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.error-title {
+  color: #fc8181;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  color: #fed7d7;
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
-  color: white;
-  text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.subtitle {
+.error-sub-message {
+  color: #cbd5e0;
+  font-size: 0.9rem;
+}
+
+/* Main Card Wrapper */
+.main-card-wrapper {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideInUp 0.6s ease-out;
+}
+
+/* Auth0 Logo */
+.auth0-logo {
+  display: block;
+  margin: 0 auto 2rem;
+  width: 120px;
+  height: auto;
+  animation: slideInDown 0.6s ease-out;
+}
+
+/* Main Title */
+.main-title {
   text-align: center;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.2rem;
+  font-size: 2.5rem;
   margin-bottom: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeIn 0.8s ease-in;
 }
 
-.card {
-  background: white;
+/* Action Card */
+.action-card {
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  margin-bottom: 2rem;
-  min-height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeIn 1s ease-in;
 }
 
-.loading {
+.action-text {
+  text-align: center;
+  color: #cbd5e0;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.button {
+  display: block;
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.button.login {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.button.login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.button.logout {
+  background: linear-gradient(135deg, #fc8181 0%, #e53e3e 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(252, 129, 129, 0.4);
+}
+
+.button.logout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(252, 129, 129, 0.6);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+/* Logged In Section */
+.logged-in-section {
+  text-align: center;
+}
+
+.logged-in-message {
+  color: #68d391;
   font-size: 1.2rem;
-  color: #667eea;
-  animation: pulse 1.5s ease-in-out infinite;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Profile Section */
+.profile-section {
+  margin: 2rem 0;
+}
+
+.profile-section-title {
+  text-align: center;
+  color: #e2e8f0;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-picture {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid #667eea;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.profile-name {
+  color: #e2e8f0;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.profile-email {
+  color: #a0aec0;
+  font-size: 0.95rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes pulse {
@@ -54,101 +252,39 @@ h1 {
   }
 }
 
-.error {
-  text-align: center;
-  color: #e53e3e;
-}
-
-.error p {
-  margin-bottom: 1rem;
-}
-
-.success {
-  text-align: center;
-  width: 100%;
-}
-
-.success h2 {
-  color: #667eea;
-  margin-bottom: 1rem;
-}
-
-.message {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #2d3748;
-  margin: 1rem 0;
-}
-
-.timestamp {
-  color: #718096;
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
-}
-
-button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  padding: 0.75rem 2rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  font-weight: 600;
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
-button:active {
-  transform: translateY(0);
-}
-
-.retry-btn {
-  background: linear-gradient(135deg, #fc8181 0%, #e53e3e 100%);
-}
-
-.info {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.info h3 {
-  color: #667eea;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.info ul {
-  list-style: none;
-  padding: 0;
-}
-
-.info li {
-  padding: 0.5rem 0;
-  color: #2d3748;
-  font-size: 1rem;
-}
-
-.info strong {
-  color: #667eea;
-}
-
+/* Responsive Design */
 @media (max-width: 768px) {
-  h1 {
+  .main-card-wrapper {
+    padding: 2rem;
+  }
+
+  .main-title {
     font-size: 2rem;
   }
 
-  .card {
+  .action-card {
     padding: 1.5rem;
   }
 
-  .message {
-    font-size: 1.2rem;
+  .auth0-logo {
+    width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    padding: 1rem;
+  }
+
+  .main-card-wrapper {
+    padding: 1.5rem;
+  }
+
+  .main-title {
+    font-size: 1.75rem;
+  }
+
+  .action-text {
+    font-size: 0.9rem;
   }
 }

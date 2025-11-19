@@ -32,7 +32,12 @@ dependencies {
 	// API Documentation
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
 
+	// Security - OAuth2 Resource Server for Auth0
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+
 	// Testing
+	testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'com.h2database:h2'
 	testImplementation 'org.testcontainers:testcontainers:1.19.3'
