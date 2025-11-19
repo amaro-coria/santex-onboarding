@@ -1,80 +1,33 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useAuth0 } from '@auth0/auth0-react'
+import AppRouter from './router/AppRouter'
 import './App.css'
 
 function App() {
-  const [message, setMessage] = useState('')
-  const [timestamp, setTimestamp] = useState('')
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const { isLoading, error } = useAuth0()
 
-  useEffect(() => {
-    fetchMessage()
-  }, [])
-
-  const fetchMessage = async () => {
-    try {
-      setLoading(true)
-      setError(null)
-      
-      // Use the backend URL based on environment
-      const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:8080'
-      const response = await axios.get(`${baseURL}/api/hello`)
-      
-      setMessage(response.data.message)
-      setTimestamp(response.data.timestamp)
-    } catch (err) {
-      setError('Failed to fetch message from backend: ' + err.message)
-      console.error('Error fetching message:', err)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  return (
-    <div className="App">
-      <div className="container">
-        <h1>🚀 Spring Boot + React</h1>
-        <p className="subtitle">Full-Stack Application Demo</p>
-        
-        <div className="card">
-          {loading && <p className="loading">Loading...</p>}
-          
-          {error && (
-            <div className="error">
-              <p>{error}</p>
-              <button onClick={fetchMessage} className="retry-btn">
-                Retry
-              </button>
-            </div>
-          )}
-          
-          {!loading && !error && (
-            <div className="success">
-              <h2>✅ Backend Response</h2>
-              <p className="message">{message}</p>
-              <p className="timestamp">
-                <strong>Timestamp:</strong> {new Date(timestamp).toLocaleString()}
-              </p>
-              <button onClick={fetchMessage} className="refresh-btn">
-                Refresh
-              </button>
-            </div>
-          )}
-        </div>
-
-        <div className="info">
-          <h3>Tech Stack</h3>
-          <ul>
-            <li><strong>Backend:</strong> Spring Boot 3.2.0 (Java 17)</li>
-            <li><strong>Frontend:</strong> React 18 + Vite</li>
-            <li><strong>HTTP Client:</strong> Axios</li>
-            <li><strong>Containerization:</strong> Docker + Docker Compose</li>
-          </ul>
+  if (isLoading) {
+    return (
+      <div className="app-container">
+        <div className="loading-state">
+          <p className="loading-text">Loading...</p>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="app-container">
+        <div className="error-state">
+          <h1 className="error-title">Authentication Error</h1>
+          <p className="error-message">{error.message}</p>
+          <p className="error-sub-message">Please try again or contact support if the problem persists.</p>
+        </div>
+      </div>
+    )
+  }
+
+  return <AppRouter />
 }
 
 export default App

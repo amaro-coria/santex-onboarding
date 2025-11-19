@@ -1,0 +1,78 @@
+package com.example.demo.dto;
+
+import com.example.demo.model.TaskStatus;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+import java.time.LocalDate;
+
+public class TaskRequest {
+
+    @NotBlank(message = "Title is required")
+    @Size(min = 3, max = 255, message = "Title must be between 3 and 255 characters")
+    private String title;
+
+    @Size(max = 1000, message = "Description cannot exceed 1000 characters")
+    private String description;
+
+    @NotNull(message = "Status is required")
+    private TaskStatus status;
+
+    private Long assignedUserId;
+
+    private LocalDate dueDate;
+
+    // Constructors
+    public TaskRequest() {
+    }
+
+    public TaskRequest(String title, String description, TaskStatus status, Long assignedUserId, LocalDate dueDate) {
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.assignedUserId = assignedUserId;
+        this.dueDate = dueDate;
+    }
+
+    // Getters and Setters
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public TaskStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(TaskStatus status) {
+        this.status = status;
+    }
+
+    public Long getAssignedUserId() {
+        return assignedUserId;
+    }
+
+    public void setAssignedUserId(Long assignedUserId) {
+        this.assignedUserId = assignedUserId;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+}
